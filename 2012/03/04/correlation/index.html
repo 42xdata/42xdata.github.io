@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+  
+    <title>Correlation | 42xdata Notes on Data</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <link href="/feed.atom" rel="alternate" title="Recent Blog Posts" type="application/atom+xml">
+    <link rel="stylesheet" href="/static/_pygments.css" type="text/css">
+  
+  </head>
+  <body>
+    <div class=container>
+      <div class=header>
+        <a href="/about/">42xdata</a> Notes on Data
+      </div>
+      <div class=navigation>
+        <ul>
+          <li><a href="/">blog</a>
+          <li><a href="/archive/">archive</a>
+          <li><a href="/tags/">tags</a>
+          <li><a href="/projects/">projects</a>
+          <li><a href="/talks/">talks</a>
+          <li><a href="/about/">about</a>
+        </ul>
+      </div>
+      <div class=body>
+        
+  <h1 class="title">Correlation</h1>
+
+  
+  <p class=date>written on Sunday, March 4, 2012
+  
+
+  <div class="section" id="what-is-correlation">
+<h2>What is correlation ?</h2>
+<p>Keyword correlation is an important relation in data.</p>
+<ul class="simple">
+<li>The maximal information coefficient (MIC) is a measure of
+two-variable dependence designed specifically for rapid exploration
+of many-dimensional data sets.</li>
+</ul>
+<p><a class="reference external" href="http://www.exploredata.net/">http://www.exploredata.net/</a></p>
+<p><a class="reference external" href="http://www.sciencemag.org/content/334/6062/1502.full?ijkey=l9Qe0i/BE6ZOI&amp;keytype=ref&amp;siteid=sci">Comments</a></p>
+<blockquote>
+Most scientists will be familiar with the use of Pearson's
+correlation coefficient r to measure the strength of association
+between a pair of variables: for example, between the height of a
+child and the average height of their parents (r ≈ 0.5; see the
+figure, panel A), or between wheat yield and annual rainfall (r ≈
+0.75, panel B). However, Pearson's r captures only linear
+association, and its usefulness is greatly reduced when associations
+are nonlinear. What has long been needed is a measure that
+quantifies associations between variables generally, one that
+reduces to Pearson's in the linear case, but that behaves as we'd
+like in the nonlinear case. On page 1518 of this issue, Reshef et
+al. (1) introduce the maximal information coefficient, or MIC, that
+can be used to determine nonlinear correlations in data sets
+equitably.</blockquote>
+</div>
+<div class="section" id="how-to-measure-it-for-different-settings">
+<h2>How to measure it for different settings?</h2>
+<p>Does it work? Is it reasonable?</p>
+<ul class="simple">
+<li>Gae-won You, Seung-won Hwang, Zaiqing Nie, Ji-Rong Wen: SocialSearch:
+enhancing entity search with social network matching. EDBT 2011:
+515-519 <a class="reference external" href="correlation/edbt11-YouHNW.pdf">pdf</a></li>
+<li>Jongwuk Lee, Seung-won Hwang, Zaiqing Nie, Ji-Rong Wen: Query result
+clustering for object-level search. KDD 2009: 1205-1214
+<a class="reference external" href="correlation/kdd09-LeeHNW.pdf">pdf</a></li>
+</ul>
+<p>Roughly speaking, such keywords are those that most frequently co-occur
+with the searched query terms</p>
+<ul class="simple">
+<li>BlogScope: A System for Online Analysis of High Volume Text Streams</li>
+<li>Arlei Silva, Wagner Meira Jr., Mohammed J. Zaki: Mining
+Attribute-structure Correlated Patterns in Large Attributed Graphs.
+<a class="reference external" href="correlation/vldb12-SilvaJZ.pdf">pdf</a></li>
+</ul>
+<p>A structural correlation pattern is a dense subgraph induced by a
+particular attribute set.</p>
+<ul class="simple">
+<li>Z. Guan, J. Wu, Q. Zhang, A. Singh, and X. Yan. Assessing and ranking
+structural correlation in graphs. In SIGMOD, pages 937–948, 2011.</li>
+<li>A. Khan, X. Yan, and K.-L. Wu. Towards proximity pattern mining in
+large graphs. In SIGMOD, pages 867–878, 2010.</li>
+</ul>
+</div>
+
+
+  
+  <p class=tags>This entry was tagged
+    
+      <a href="/tags/correlation/">correlation</a>
+  
+
+  
+
+        <!--
+        <div class=adspace>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px"
+               data-ad-client="ca-pub-6757320953560275"
+               data-ad-slot="8324866143"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+        --!>
+      </div>
+      <div class=footer>
+        <p>&copy; Copyright 2014 by 42xdata.
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        <p>
+        (<a href="/feed.atom" rel="alternate" title="Recent Blog Posts">feed</a>)
+      </div>
+    </div>
+    <!--
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20909083-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    --!>
+  </body>
+</html>
