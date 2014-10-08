@@ -2,11 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Recent Blog Posts</title>
   <id>http://www.42xdata.com/feed.atom</id>
-  <updated>2014-10-03T00:00:00Z</updated>
+  <updated>2014-10-07T00:00:00Z</updated>
   <link href="http://www.42xdata.com/" />
   <link href="http://www.42xdata.com/feed.atom" rel="self" />
   <subtitle type="text">Recent blog posts</subtitle>
   <generator>Werkzeug</generator>
+  <entry xml:base="http://www.42xdata.com/feed.atom">
+    <title type="text">Weekly Readings, Oct 7</title>
+    <id>http://www.42xdata.com/2014/10/7/WeeklyReading</id>
+    <updated>2014-10-07T00:00:00Z</updated>
+    <link href="http://www.42xdata.com/2014/10/7/WeeklyReading" />
+    <author>
+      <name>42xdata</name>
+    </author>
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://news.ycombinator.com/item?id=8416455&quot;&gt;History of Apache Storm and Lessons Learned&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Great read. One thing I learned that it is important to think carefully and the very beginning to outstanding other solutions. It also means the key technology can happen at a very eary stage.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.42xdata.com/feed.atom">
     <title type="text">Static Generated Website</title>
     <id>http://www.42xdata.com/2014/10/3/a-minimal-static-generated-blog</id>
@@ -78,6 +93,46 @@ particular attribute set.&lt;/p&gt;
 structural correlation in graphs. In SIGMOD, pages 937–948, 2011.&lt;/li&gt;
 &lt;li&gt;A. Khan, X. Yan, and K.-L. Wu. Towards proximity pattern mining in
 large graphs. In SIGMOD, pages 867–878, 2010.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://www.42xdata.com/feed.atom">
+    <title type="text">Buffered I/O and non-buffered I/O</title>
+    <id>http://www.42xdata.com/2008/10/11/BufferedIO-and-non-BufferedIO</id>
+    <updated>2008-10-11T00:00:00Z</updated>
+    <link href="http://www.42xdata.com/2008/10/11/BufferedIO-and-non-BufferedIO" />
+    <author>
+      <name>42xdata</name>
+    </author>
+    <content type="html">&lt;p&gt;实验需要对Flash Disk做无系统缓冲的I/O操作，顺便了解了一下Linux下的I/O.&lt;/p&gt;
+&lt;p&gt;Linux上的块设备的操作可以分为两类：&lt;/p&gt;
+&lt;ol class=&quot;arabic simple&quot;&gt;
+&lt;li&gt;第一类是使用C标准库中的fopen/fread/fwrite 系列的函数，我们可以称其为 buffered I/O。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;具体的I/O path如下:&lt;/p&gt;
+&lt;blockquote&gt;
+Application&amp;lt;-&amp;gt;Library Buffer&amp;lt;-&amp;gt;Operation System Cache&amp;lt;-&amp;gt;File System/Volume Manager&amp;lt;-&amp;gt;Device&lt;/blockquote&gt;
+&lt;p&gt;library buffer是标准库提供的用户空间的buffer，可以通过setvbuf改变其大小。&lt;/p&gt;
+&lt;ol class=&quot;arabic simple&quot; start=&quot;2&quot;&gt;
+&lt;li&gt;第二类是使用Linux的系统调用的open/read/write 系列的函数，我们可以称其为 non-buffered I/O。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I/O Path:&lt;/p&gt;
+&lt;blockquote&gt;
+Application&amp;lt;-&amp;gt; Operation System Cache &amp;lt;-&amp;gt;File System/Volume Manager&amp;lt;-&amp;gt;Device&lt;/blockquote&gt;
+&lt;p&gt;此外，我们可以通过设置open的O_DIRECT标志来实现Direct I/O（或者叫Raw I/O）,即绕过OS Cache,直接读取Device ( that's what we want^o^ ), 等于将OS cache换成自己管理的cache。不过，Linus在邮件列表中建议不这么做，而是使用posix_fadvice, madvice。[2]中表明Direct I/O比buffered I/O的性能高很多。&lt;/p&gt;
+&lt;p&gt;在使用O_DIRECT的注意buffer的address必须是block alignment的(i.e. 初始地址必须是boundary), 可以用posix_memalign()函数分配内存以得到这样的buffer。至于为什么要这样，与实现的mmap有关，参见[5].&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;参考&lt;/h2&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;[1] &lt;a class=&quot;reference external&quot; href=&quot;http://kerneltrap.org/node/7563&quot;&gt;Linux: Accessing Files With O_DIRECT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[2] &lt;a class=&quot;reference external&quot; href=&quot;http://www.ukuug.org/events/linux2001/papers/html/AArcangeli-o_direct.html&quot;&gt;Andrea Arcangeli, O_DIRECT Whitepaper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[3] &lt;a class=&quot;reference external&quot; href=&quot;http://articles.directorym.net/_A_Trip_Down_the_Data_Path_IO_and_Performance-a894569.html&quot;&gt;A Trip Down the Data Path: I/O and Performance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[4] &lt;a class=&quot;reference external&quot; href=&quot;http://articles.directorym.net/Operating_Systems_System_Calls_and_IO-a894576.html&quot;&gt;Operating Systems System Calls and I/O&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[5] &lt;a class=&quot;reference external&quot; href=&quot;http://www.xml.com/ldd/chapter/book/ch13.html&quot;&gt;Linux Device Drivers, 2nd Edition, Chapter 13 mmap and DMA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[6] &lt;a class=&quot;reference external&quot; href=&quot;http://topic.csdn.net/u/20080806/10/cdb1faa1-0146-4e96-8b12-26ba60acdbb5.html&quot;&gt;http://topic.csdn.net/u/20080806/10/cdb1faa1-0146-4e96-8b12-26ba60acdbb5.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[7] &lt;a class=&quot;reference external&quot; href=&quot;http://lists.alioth.debian.org/pipermail/parted-devel/2007-July/thread.html#1855&quot;&gt;http://lists.alioth.debian.org/pipermail/parted-devel/2007-July/thread.html#1855&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[8] &lt;a class=&quot;reference external&quot; href=&quot;http://www.ibm.com/developerworks/cn/linux/l-cn-read/&quot;&gt;Read系统调用剖析,&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 </content>

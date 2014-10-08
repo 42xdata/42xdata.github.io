@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+  
+    <title>Buffered I/O and non-buffered I/O | 42xdata Notes on Data</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <link href="/feed.atom" rel="alternate" title="Recent Blog Posts" type="application/atom+xml">
+    <link rel="stylesheet" href="/static/_pygments.css" type="text/css">
+  
+  </head>
+  <body>
+    <div class=container>
+      <div class=header>
+        <a href="/about/">42xdata</a> Notes on Data
+      </div>
+      <div class=navigation>
+        <ul>
+          <li><a href="/">blog</a>
+          <li><a href="/archive/">archive</a>
+          <li><a href="/tags/">tags</a>
+          <li><a href="/projects/">projects</a>
+          <li><a href="/talks/">talks</a>
+          <li><a href="/about/">about</a>
+        </ul>
+      </div>
+      <div class=body>
+        
+  <h1 class="title">Buffered I/O and non-buffered I/O</h1>
+
+  
+  <p class=date>written on Saturday, October 11, 2008
+  
+
+  <p>实验需要对Flash Disk做无系统缓冲的I/O操作，顺便了解了一下Linux下的I/O.</p>
+<p>Linux上的块设备的操作可以分为两类：</p>
+<ol class="arabic simple">
+<li>第一类是使用C标准库中的fopen/fread/fwrite 系列的函数，我们可以称其为 buffered I/O。</li>
+</ol>
+<p>具体的I/O path如下:</p>
+<blockquote>
+Application&lt;-&gt;Library Buffer&lt;-&gt;Operation System Cache&lt;-&gt;File System/Volume Manager&lt;-&gt;Device</blockquote>
+<p>library buffer是标准库提供的用户空间的buffer，可以通过setvbuf改变其大小。</p>
+<ol class="arabic simple" start="2">
+<li>第二类是使用Linux的系统调用的open/read/write 系列的函数，我们可以称其为 non-buffered I/O。</li>
+</ol>
+<p>I/O Path:</p>
+<blockquote>
+Application&lt;-&gt; Operation System Cache &lt;-&gt;File System/Volume Manager&lt;-&gt;Device</blockquote>
+<p>此外，我们可以通过设置open的O_DIRECT标志来实现Direct I/O（或者叫Raw I/O）,即绕过OS Cache,直接读取Device ( that's what we want^o^ ), 等于将OS cache换成自己管理的cache。不过，Linus在邮件列表中建议不这么做，而是使用posix_fadvice, madvice。[2]中表明Direct I/O比buffered I/O的性能高很多。</p>
+<p>在使用O_DIRECT的注意buffer的address必须是block alignment的(i.e. 初始地址必须是boundary), 可以用posix_memalign()函数分配内存以得到这样的buffer。至于为什么要这样，与实现的mmap有关，参见[5].</p>
+<div class="section" id="id1">
+<h2>参考</h2>
+<ul class="simple">
+<li>[1] <a class="reference external" href="http://kerneltrap.org/node/7563">Linux: Accessing Files With O_DIRECT</a></li>
+<li>[2] <a class="reference external" href="http://www.ukuug.org/events/linux2001/papers/html/AArcangeli-o_direct.html">Andrea Arcangeli, O_DIRECT Whitepaper</a></li>
+<li>[3] <a class="reference external" href="http://articles.directorym.net/_A_Trip_Down_the_Data_Path_IO_and_Performance-a894569.html">A Trip Down the Data Path: I/O and Performance</a></li>
+<li>[4] <a class="reference external" href="http://articles.directorym.net/Operating_Systems_System_Calls_and_IO-a894576.html">Operating Systems System Calls and I/O</a></li>
+<li>[5] <a class="reference external" href="http://www.xml.com/ldd/chapter/book/ch13.html">Linux Device Drivers, 2nd Edition, Chapter 13 mmap and DMA</a></li>
+<li>[6] <a class="reference external" href="http://topic.csdn.net/u/20080806/10/cdb1faa1-0146-4e96-8b12-26ba60acdbb5.html">http://topic.csdn.net/u/20080806/10/cdb1faa1-0146-4e96-8b12-26ba60acdbb5.html</a></li>
+<li>[7] <a class="reference external" href="http://lists.alioth.debian.org/pipermail/parted-devel/2007-July/thread.html#1855">http://lists.alioth.debian.org/pipermail/parted-devel/2007-July/thread.html#1855</a></li>
+<li>[8] <a class="reference external" href="http://www.ibm.com/developerworks/cn/linux/l-cn-read/">Read系统调用剖析,</a></li>
+</ul>
+</div>
+
+
+  
+  <p class=tags>This entry was tagged
+    
+      <a href="/tags/I/O/">I/O</a>, 
+      <a href="/tags/performance/">performance</a> and 
+      <a href="/tags/rst/">rst</a>
+  
+
+  
+
+        <!--
+        <div class=adspace>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px"
+               data-ad-client="ca-pub-6757320953560275"
+               data-ad-slot="8324866143"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+        --!>
+      </div>
+      <div class=footer>
+        <p>&copy; Copyright 2014 by 42xdata.
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        <p>
+        (<a href="/feed.atom" rel="alternate" title="Recent Blog Posts">feed</a>)
+      </div>
+    </div>
+    <!--
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20909083-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    --!>
+  </body>
+</html>
