@@ -8,18 +8,29 @@
   <subtitle type="text">Recent blog posts</subtitle>
   <generator>Werkzeug</generator>
   <entry xml:base="http://www.42xdata.com/feed.atom">
-    <title type="text">Weekly Readings, Oct 7</title>
+    <title type="text">Weekly Readings</title>
     <id>http://www.42xdata.com/2014/10/7/WeeklyReading</id>
     <updated>2014-10-07T00:00:00Z</updated>
     <link href="http://www.42xdata.com/2014/10/7/WeeklyReading" />
     <author>
       <name>42xdata</name>
     </author>
-    <content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;p class=&quot;first&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://news.ycombinator.com/item?id=8416455&quot;&gt;History of Apache Storm and Lessons Learned&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Great read. One thing I learned that it is important to think carefully and the very beginning to outstanding other solutions. It also means the key technology can happen at a very eary stage.&lt;/p&gt;
-&lt;/li&gt;
+    <content type="html">&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://news.ycombinator.com/item?id=8416455&quot;&gt;History of Apache Storm and Lessons Learned&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Great reading. One thing I learned is thinking carefully at the very beginning to overcome outstanding other solutions. It also means the key technology can happen at a very eary stage.&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://news.ycombinator.com/item?id=8244086&quot;&gt;Invertiable Bloom Lookup Tables&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is a paper I'd like to read long times ago. It reminds me when I attend the presentation of WWW'14 best paper: Efficient Estimation for High Similarities using Odd Sketches [&lt;a class=&quot;reference external&quot; href=&quot;http://www.itu.dk/people/pagh/papers/oddsketch.pdf&quot;&gt;pdf&lt;/a&gt; | &lt;a class=&quot;reference external&quot; href=&quot;http://www.itu.dk/people/pagh/papers/oddsketch_slides.pdf&quot;&gt;slides&lt;/a&gt; ] (It aims to compute Jarcard Similarity when two sets are very similar to each other.)&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://accu.org/content/conf2013/Tobias_Darm_Effective_GoF_Patterns.pdf&quot;&gt;Effective GoF Patterns with C++ 11 and Boost&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is a detailed implementation of modern GoF pattern. I planned to type each example and learn.&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://www.tokutek.com/wp-content/uploads/2012/09/BenderKuszmaul-tutorial-xldb12.pdf&quot;&gt;Data Structure and Algorithms for Big Databases&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is a presenation of various I/O efficient algorithm in the model of external I/O model.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.42xdata.com/feed.atom">
